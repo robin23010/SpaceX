@@ -1,0 +1,68 @@
+<h3 class="ml-3">SpaceX Launch Programs</h3>
+<div class=" row mt-2 ">
+    
+    <!-- filter block -->
+    <div class="col-lg-2 col-sm-12 filterCard">
+        <div><h4>Filters</h4></div>
+        <div class="ml-5">Launch Year</div>
+        <div class="row" >
+           
+            <div class="col-md-5 col-sm-5" *ngFor="let year of launchYearArray">
+            <button class="mt-2 ml-2" (click)="filterAsPerYear(year)" type="button" >{{year}}</button>
+        </div>
+        </div>
+        <div class="underLine">Successful Launch</div>
+        <div class="row" >
+           
+            <div class="col-md-5" >
+            <button class="mt-2 ml-2" type="button" (click)="sucessFulLaunchFilter(true)">True</button>
+        </div>
+        <div class="col-md-5" >
+            <button class="mt-2 ml-2" type="button" (click)="sucessFulLaunchFilter(false)">False</button>
+        </div>
+        </div>
+        <div class="underLine">Successful Landing</div>
+        <div class="row" >
+           
+            <div class="col-md-5" >
+            <button class="mt-2 ml-2" type="button" (click)="sucessLandingFilter(true)">True</button>
+        </div>
+        <div class="col-md-5" >
+            <button class="mt-2 ml-2" type="button" (click)="sucessLandingFilter(false)">False</button>
+        </div>
+        </div>
+    </div>
+    <!-- spaceX card block  -->
+    <div class="col-lg-10  row mt-2">
+        <div class="card col-lg-3" *ngFor="let data of cardData">
+
+           <div ><img src="{{data.links['mission_patch']}}" alt=""></div>
+           <div class="row mt-2 ml-1"  class="missionText"><label for="missionName" >{{data.mission_name}}</label> <label class="ml-2">#{{data.flight_number}}</label></div>
+           <div class="row  ml-1">
+               <label for="missionId" ><h6>Mission Ids :</h6> </label> 
+               <label for="" class="missionText"> {{data.mission_id}}</label>
+           </div>
+
+           <div class="row  ml-1">
+            <label for="launchYear" ><h6>Launch Year :</h6> </label> 
+            <p  class="missionText"> {{data.launch_year}}</p>
+        </div>
+
+        <div class="row  ml-1">
+            <label for="launchSuccessful" class="successLabel"><h6>Successful Launch  :</h6> </label> 
+            <p  class="missionText"> {{data.launch_success}}</p>
+        </div>
+
+        <!-- launch_landing was not there in api response so randomly take launch_success  -->
+        <div class="row  ml-1">
+            <label for="launchSuccessful" class="successLabel"><h6>Successful Landing  :</h6> </label> 
+            <p  class="missionText"> {{data.launch_success}}</p>
+        </div>
+        </div>        
+    </div>
+</div>
+
+
+<div class="footer">
+    <p> Developed By : {{developerName}}</p>
+  </div>
